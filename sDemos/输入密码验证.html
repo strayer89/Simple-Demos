@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="passwordCheck" type="text" name="password">
+	<button id="submit">提交</button>
+
+	<script type="text/javascript">
+		
+		(function(){
+			var submit = document.getElementById("submit");	
+			var i = 0;
+			submit.onclick = function(){
+				var pas = document.getElementById("passwordCheck").value;
+				if(i < 2){
+					if(pas == 888888){
+						console.log("right");
+					} else if(pas != 888888){
+						console.log("wrong");
+						i++;
+					}
+				} else {
+					alert("输入次数超过次数");
+				}
+			}
+		})();
+
+
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	<input id="username" type="username" name="uname">
+	<input id="pass" type="pass" name="pass">
+	<button id="submit">提交</button>
+
+	<script type="text/javascript">
+		(function(){
+			var submit = document.getElementById("submit");
+			submit.onclick = function(){
+				var userName = document.getElementById("username").value;
+				var passWord = document.getElementById("pass").value;
+				if(userName == "admin" && passWord == "888888"){
+					console.log("you are in");
+				} else {
+					if( userName != "admin"){
+						console.log("wrong username");
+					} else if( passWord != "888888"){
+						console.log("wrong passWord");
+					}
+				}
+
+			}
+		})();
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input id="age" type="text" name="age">
+	<button id="sub">提交</button>
+	<script type="text/javascript">
+		(function(){
+			var sub = document.getElementById("sub");
+			sub.onclick = function(){
+				var kAge = document.getElementById("age").value;
+				if(kAge){
+					if(kAge >= 18){
+						console.log("wellcome in");
+					} else if(kAge<=10){
+						console.log("please get out");
+					} else {
+						var con = confirm("是否要进入这个网站？");
+						if(con == true){
+							console.log("you are in");
+						} else {
+							console.log("you are out");
+						}
+					}
+				} else {
+					console.log("请输入正确的年龄");
+				}
+			}
+		})();
+	</script>
+</body>
+</html>

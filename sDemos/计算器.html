@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		#container{ 
+			user-select:none;
+			height:480px;
+			width:240px;
+			border:1px solid black;
+			margin-left: 100px;
+			margin-top: 30px;
+		 }
+		 #record{
+		 	height:60px;
+		 	width:100%;
+		 	float:left;
+		 	background:gray;
+		 	font-size:30px;
+		 	text-align: right;
+		 }
+		 #top{
+		 	height:120px;
+		 	width:100%;
+		 	float:left;
+		 	background: green;
+		 	font-size:80px;
+		 	text-align: right;
+		 	color:red;
+		 }
+		 #num{
+		 	height:300px;
+		 	width:100%;
+		 	float:left;
+			background:black;
+		 }
+		 .numbers{
+		 	float:left;
+		 	height:60px;
+		 	width:60px;
+		 	text-align: center;
+		 	line-height: 60px;
+		 	background:orange;
+		 	border-radius: 50%;
+		 	cursor:pointer;
+		 }
+
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="record"></div>
+		<div id="top">0</div>
+		<div id="num">
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">c</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)"><-</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">%</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">/</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">7</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">8</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">9</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">x</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">4</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">5</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">6</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">-</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">1</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">2</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">3</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">+</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">()</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">0</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">.</div>
+			<div class="numbers" onclick="canculateNum(this.innerHTML)">=</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var elements = document.getElementsByClassName("numbers");
+		var topNum = document.getElementById("top");
+		for(var i=0; i<20; i++){
+			elements[i].onmousedown = function(){
+				this.style.background = "blue";
+				this.onmouseup = function(){
+					this.style.background = "orange";
+				}
+			}
+		}
+
+		var oldNum = "0";
+		var showNum = "0";
+		var newNum = "0";
+		var mark = "";
+		var oldMark = "";
+		var allString = "";
+		function canculateNum(mark){
+			if(mark == "0" || mark == "1"|| mark =="2"|| mark == "3"|| mark =="4"|| mark =="5"|| mark =="6"|| mark == "7"|| mark == "8"|| mark == "9" || mark == "."){
+				showNum += mark;
+				topNum.innerHTML = Number(showNum);
+
+			} else if( mark == "+" || mark == "-" || mark == "x" || mark == "/" || mark == "%"){
+				canculate();
+				oldMark = mark;
+			} else if(mark == "="){
+				canculate();
+			} else if(mark == "c"){
+				showNum = "0";
+				newNum = "0";
+				oldNum = "0";
+				topNum.innerHTML = "0";
+			}			
+		}
+		function canculate(){
+			if(oldMark){
+				switch(oldMark){
+					case "+":
+						newNum = showNum;
+						showNum = Number(oldNum) + Number(newNum);
+						topNum.innerHTML = showNum;
+						oldNum = showNum;
+						showNum = "0";
+						console.log(showNum);
+					break;
+					case "-":
+						newNum = showNum;
+						showNum = Number(oldNum) - Number(newNum);
+						topNum.innerHTML = showNum;
+						oldNum = showNum;
+						showNum = "0";
+					break;
+					case "x":
+						newNum = showNum;
+						showNum = Number(oldNum) * Number(newNum);
+						topNum.innerHTML = showNum;
+						oldNum = showNum;
+						showNum = "0";
+					break;
+					case "/":
+						newNum = showNum;
+						showNum = Number(oldNum) / Number(newNum);
+						topNum.innerHTML = showNum;
+						oldNum = showNum;
+						showNum = "0";
+					break;
+					case "%":
+						newNum = showNum;
+						showNum = Number(oldNum) % Number(newNum);
+						topNum.innerHTML = showNum;
+						oldNum = showNum;
+						showNum = "0";
+					break;
+				}
+			} else {
+				oldNum = showNum;
+				showNum = "0";
+			}
+		}
+	</script>
+</body>
+</html>

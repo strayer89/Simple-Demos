@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>判断年份是否是闰年</title>
+</head>
+<body>
+	<input id="getYear"  type="text" name="getYear">
+	<button id="submit">提交</button>
+	<script>
+		var getYear = document.getElementById("getYear");
+		var submit = document.getElementById("submit");
+		submit.onclick = function(){
+			var yearValue = getYear.value;
+			if( yearValue % 400 == 0){
+				console.log(yearValue + "是闰年");
+			} else if(yearValue % 4 == 0 && yearValue % 100 != 0 ){
+				console.log(yearValue + "是闰年");
+			} else {
+				console.log(yearValue + "不是闰年");
+			}
+		};
+	</script>
+</body>
+</html>
