@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style type="text/css">
+	#container{
+		height:650px;
+		width:990px;
+		background:gray;
+		float:left;
+		margin-top:100px;
+		margin-left:200px;
+		background: url("img/1.jpg");
+	}
+	img{
+		width:100%;
+		height:100%;
+		overflow: hidden;
+		display:none;
+	}
+	.active{
+		display:block;
+	}
+	.hide{
+		display:none;
+	}
+</style>				
+</head>
+<body>
+	<div id="container">
+		<img src="img/1.jpg">
+		<img src="img/2.jpg">
+		<img src="img/3.jpg">
+		<img src="img/4.jpg">
+		<img src="img/5.jpg">
+		<img src="img/6.jpg">
+		<img src="img/7.jpg">
+	</div>
+	<script>
+		window.onload = function(){
+			var conImg = document.getElementById("container");
+			var strImg = conImg.childNodes;
+			var imgArr = [];
+
+			// 将子元素中的图片对象的引用保存在数组中
+			for( var i=0; i<strImg.length; i++){
+				if(strImg[i].nodeType == 1){
+					imgArr.push(strImg[i]);
+				}
+			}
+
+			//替换类名的字符串
+			var j = 1;
+			var time = setInterval(function(){
+				for(var i=0; i<imgArr.length; i++){
+					imgArr[i].className = "hide";
+				}
+				imgArr[j].className = "active";
+				j++;
+				if( j == 7){
+					j = 0;
+				}
+			},2000)
+		}
+	</script>
+</body>
+</html>
